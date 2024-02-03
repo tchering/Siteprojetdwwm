@@ -96,6 +96,7 @@
         xhr.send();
     }
 </script>
+
 <!-- 
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
