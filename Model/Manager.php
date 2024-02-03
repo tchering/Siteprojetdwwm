@@ -71,7 +71,7 @@ class Manager
             }
             $connexion = $this->connexion();
             $sql = "insert into $table($column) values($pi)";
-            // MyFct:😛rints($sql);
+            // MyFct::prints($sql);die;
             $requete = $connexion->prepare($sql);
             $requete->execute($values); // Pass $values directly, not [$values]
         }

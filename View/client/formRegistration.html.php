@@ -1,7 +1,7 @@
 <div class="vh-150 w-100 d-flex justify-content-center align-items-center bg-dark">
     <div class="w50 radius-10 shadow-white p-4">
         <h1 class="titre text-light text-center ">INSCRIPTION</h1>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             <?php echo isset($message) ? $message : "";
                     unset($message); ?>
             <label for="nom">Nom:</label>

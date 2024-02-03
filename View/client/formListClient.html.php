@@ -2,10 +2,14 @@
 
     <div class="w50 radius-10 shadow-white p-4">
         <h1 class="titre text-light text-center ">LISTE CLIENT</h1>
-        <form action="client&action=save" method="post">
+        <form action="client&action=save" method="post" enctype="multipart/form-data">
             <div class="form-line-input my-4" hidden>
                 <label for="id">Code:</label>
                 <input type="text" id="id_client" name="id_client" value="<?= $id_client ?>" <?= $disabled ?>>
+            </div>
+            <div class="form-line-input my-4">
+                <img id="image_view" src="public/upload/<?=$photo?>" alt="" width="40%">
+                <input class="" type="file" class="from-control w50" id="photo" name="photo" value="" onChange="previewImage(event,'image_view')" >
             </div>
             <div class="form-line-input my-4">
                 <label for="nom">Nom:</label>
