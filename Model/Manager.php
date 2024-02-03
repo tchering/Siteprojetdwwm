@@ -16,8 +16,6 @@ class Manager
     function modifierDb($table, $data)
     {
         extract($data);
-        // MyFct::prints($data);die;
-        //update $table set nom=?,prenom=?,email=?,mot_de_passe=?,id_role=? where id_client=?;
         $condition = "";
         $values = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
