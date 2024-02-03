@@ -36,7 +36,7 @@ class ClientController extends MyFct
                 $this->modifierClient($id);
                 break;
             case 'save':
-                $this->saveClient($_POST);
+                $this->saveClient($_POST, $_FILES);
                 break;
             case 'supprimer':
                 $this->supprimer($id);
@@ -81,8 +81,27 @@ class ClientController extends MyFct
     }
 
     //todo added new function saveCLient if id=0 then add if not then update.
-    function saveClient($data)
+    function saveClient($data, $files = [])
     {
+        if ($files['photo']['name']) {
+
+            $file_photo = $_FILES['photo'];
+
+            $name = $file_photo['name'];
+
+            $source = $file_photo['tmp_name'];
+
+            $destination = "public/upload/$name";
+
+            $data['photo'] = $name;
+
+            if (move_uploaded_file($source, $destination)) {
+                // Store path to uploaded photo in session
+                $_SESSION['photo'] = $destination;
+            }
+        } else {
+            unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
+        }
         extract($data);
         $cm = new ClientManager();
         $id_client = (int) $id_client;
@@ -197,11 +216,13 @@ class ClientController extends MyFct
             $nom = $client->getNom();
             $prenom = $client->getPrenom();
             $email = $client->getEmail();
+            $photo = $client->getPhoto();
             $listClients[] = [
                 'id' => $id,
                 'nom' => $nom,
                 'prenom' => $prenom,
                 'email' => $email,
+                'photo' => $photo,
             ];
         }
         $variables = [
@@ -215,9 +236,15 @@ class ClientController extends MyFct
     //! this is common form for afficherCLient  and modifierClient.
     function formGenerate($client, $disabled)
     {
+        //this is for photo
+        $photo = $client->getPhoto();
+        if (!$photo) {
+            $photo = "photo.jpg";
+        }
         //!Here we will get all roles from database with its id_role since it is in Client.
         $r = new RoleManager();
         $client_roleId = $client->getId_role();
+
         $allRoles = $r->findRoles();
         $roles = [];
         foreach ($allRoles as $role) {
@@ -239,6 +266,7 @@ class ClientController extends MyFct
             'disabled' => $disabled,
             'titre' => 'Liste Client',
             'role' => $client->getNom_role(),
+            'photo' => $photo,
         ];
         $file = "View/client/formListClient.html.php";
         $this->generatePage($file, $variables);

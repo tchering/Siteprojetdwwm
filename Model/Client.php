@@ -3,6 +3,7 @@
 class Client
 {
     private $id_client;
+    private $photo;
     private $nom;
     private $prenom;
     private $email;
@@ -159,6 +160,26 @@ class Client
     public function setId_role($id_role)
     {
         $this->id_role = $id_role;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of photo
+     */ 
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * Set the value of photo
+     *
+     * @return  self
+     */ 
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
 
         return $this;
     }

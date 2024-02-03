@@ -17,6 +17,7 @@
     <script src="service/script.js"></script>
     <script src="service/script_navbar.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <script src="Service/myScript.js" defer></script>
     <title>Document</title>
 </head>
 
@@ -75,6 +76,7 @@
                         <li><a href="" style="color: cornflowerblue;">MON COMPTE</a>
                             <ul class="sub-menu">
                                 <li><a href=""><?= $_SESSION['nom'] ?></a></li>
+                                <li><img src="<?= $_SESSION['photo'] ?>" alt="" width="100%"></li>
                                 <li><a href="client&action=changePass">Changer MDP</a></li>
                                 <li><a href="client&action=logout">LOGOUT</a></li>
                                 <?php if ($_SESSION['id_role'] == 1) : ?>

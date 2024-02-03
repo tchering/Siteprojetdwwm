@@ -12,19 +12,14 @@
 
         </div>
 
-        <!-- <div class="button d-flex justify-content-between my-3">
-        <a href="client&action=insert" class="btn btn-primary">Ajourter</a>
-        <a href="client&action=afficher" class="btn btn-primary">Afficher</a>
-        <a href="" class="btn btn-primary">Modifier</a>
-        <a href="" class="btn btn-primary">Supprimer</a>
-    </div> -->
         <thead id="thead_client">
             <tr>
                 <th class="w5"></th>
                 <th class="w10">CODE</th>
+                <th class="w10">PHOTO</th>
                 <th class="w20">NOM</th>
-                <th class="w30">PRENOM</th>
-                <th class="w30">EMAIL</th>
+                <th class="w25">PRENOM</th>
+                <th class="w25">EMAIL</th>
                 <th> ACTION</th>
             </tr>
         </thead>
@@ -47,12 +42,13 @@
                 <tr>
                 <td class = "w5"><input type = "checkbox"></td>
                     <td class = "w10">${client.id}</td>
+                    <td class = "w10"><img src = "public/upload/${client.photo}" width="20%"></td>
                     <td class = "w20">${client.nom}</td>
-                    <td class = "w30">${client.prenom}</td>
+                    <td class = "w2(">${client.prenom}</td>
 
-                    <td class = "w30">${client.email}</td>
+                    <td class = "w25">${client.email}</td>
                     <td>
-                    <div class="button d-flex justify-content-between my-3">
+                     <div class="button d-flex justify-content-between my-3">
                         <a href="client&action=afficher&id=${client.id}" class="btn btn-sm btn-secondary mx-2" ><i class="fas fa-eye"></i></a>
                         <a href="client&action=modifier&id=${client.id}" class="btn btn-sm btn-success mx-2"><i class = "fas fa-pen"></i></a>
                         <a href="javascript:void(0);" class="btn btn-sm btn-danger mx-2" onclick="supprimer(${client.id})"><i class="fas fa-trash"></i></a> 
@@ -79,7 +75,7 @@
         }
     }
 
-   
+
 
     function search() {
         let xhr = new XMLHttpRequest();
@@ -94,3 +90,9 @@
         xhr.send();
     }
 </script>
+
+<!-- <div class="button d-flex justify-content-between my-3">
+                        <a href="client&action=afficher&id=${client.id}" class="btn btn-sm btn-secondary mx-2" ><i class="fas fa-eye"></i></a>
+                        <a href="client&action=modifier&id=${client.id}" class="btn btn-sm btn-success mx-2"><i class = "fas fa-pen"></i></a>
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger mx-2" onclick="supprimer(${client.id})"><i class="fas fa-trash"></i></a> 
+                    </div> -->
