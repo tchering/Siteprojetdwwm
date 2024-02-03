@@ -39,7 +39,6 @@
 </div>
 <script>
     let listClients = <?= json_encode($listClients); ?>;
-    // console.log(Clients);  // Add this line
     allClients(listClients);
 
     function allClients(tableName) {
