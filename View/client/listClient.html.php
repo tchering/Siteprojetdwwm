@@ -1,4 +1,4 @@
-<!-- <table class="table align-middle mb-0 bg-white">
+<table class="table align-middle mb-0 bg-white">
     <div class="d-flex justify-content-between align-items-center">
         <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREER</button><i class="fas fa-plus"></i></a>
         <div class="d-flex justify-content-center align-items-center mx-3">
@@ -95,9 +95,9 @@
         }
         xhr.send();
     }
-</script> -->
+</script>
 
-
+<!-- 
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
 </head>
@@ -189,4 +189,4 @@
         }
         xhr.send();
     }
-</script>
+</script> -->
