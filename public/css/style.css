@@ -1,0 +1,406 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.flex_imp {
+  display: flex !important;
+}
+
+.flex_spc_even {
+  justify-content: space-evenly;
+}
+
+.w80 {
+  width: 80%;
+}
+
+.w10 {
+  width: 10%;
+}
+
+.text-bluegaming {
+  font-size: 1, 7vw;
+  color: cornflowerblue;
+}
+
+.container {
+  width: 100%;
+  height: 20vh;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logo {
+  width: auto;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo > h1 {
+  margin: 0 !important;
+}
+
+/*----------------------menu responsive-----------------------*/
+.menu {
+  background-color: #333;
+}
+.menu_scroll {
+  position: fixed;
+  top: 0;
+  z-index: 30;
+  background-color: #333;
+  width: 100%;
+  justify-content: center;
+}
+.nav-list {
+  list-style: none;
+  margin: 0;
+  left: 5;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-list li {
+  position: relative;
+}
+
+.nav-list a {
+  display: block;
+  padding: 15px 20px;
+  text-decoration: none;
+  color: #fff;
+}
+
+.sub-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: transparent;
+  list-style: none;
+  z-index: 3;
+}
+
+.sub-menu li {
+  width: 100%;
+  background-color: cornflowerblue;
+  border-block-color: #333;
+  border-style: groove;
+  border-radius: 2px;
+  border: solid 1px #333;
+  box-shadow: 7px 5px 5px #333;
+  transition: 0.5s all;
+}
+.sub-menu li:hover {
+  background-color: #333;
+}
+
+.nav-list li:hover > .sub-menu {
+  display: block;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-list {
+    flex-direction: column;
+  }
+
+  .nav-list li {
+    position: static;
+  }
+
+  .sub-menu {
+    display: none;
+  }
+
+  .nav-list li:hover .sub-menu {
+    display: flex;
+    position: static;
+  }
+}
+/*----------------------fin menu responsive---------------------*/
+.logo_size {
+  height: 50px;
+}
+
+/*--- Base page html ---*/
+
+#body_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20vh;
+  margin: 50px 0;
+}
+
+#fondecrancontactform {
+  background: url(image-site-vitrine/fond-halo.jpeg);
+  background-size: 100%;
+  background-attachment: fixed;
+}
+#contact_form {
+  border-radius: 30px;
+  background-image: url(image-site-vitrine/fond-halo.jpeg);
+  font-size: large;
+  height: 400px;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+  margin-top: 100px;
+  margin-bottom: 200px;
+  margin-right: 450px;
+  color: rgb(255, 255, 255);
+  color: aliceblue;
+  font-family: "Pixelify Sans", sans-serif;
+}
+/*----------formulaire d'inscritpion--------------*/
+
+form {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+h2 {
+  color: #343a40;
+}
+
+label {
+  display: block;
+  margin: 20px 0 5px;
+  color: #495057;
+  font-size: 16px;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+footer {
+  border: solid 1px #333;
+}
+.footer-li {
+  list-style-type: none;
+}
+.footer-li a {
+  color: white;
+}
+.footer-li :hover {
+  color: #333;
+}
+/*-- carrousel promotionnel --*/
+
+.container_carousel {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  font-family: "Pixelify Sans", sans-serif;
+}
+
+/*-- pages selection articles --*/
+
+.main_pages {
+  width: 100%;
+  height: auto;
+  display: flex;
+  margin-top: 80px;
+  justify-content: space-evenly;
+}
+
+/*-- carrousel des articles --*/
+
+.containers {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+}
+
+.containers_carrousels {
+  padding: 20px;
+  width: 100%;
+  position: relative;
+  transition: transform 0.5s;
+  overflow: hidden;
+}
+
+.carrousel__panorama {
+  transition: transform 0.5s;
+  transform: translate3d(0, 0, 0);
+  display: flex;
+}
+
+.carrousel__panorama::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.carrousel__item {
+  justify-content: center;
+}
+
+.contain {
+  position: relative;
+}
+
+.next_slide,
+.prev_slide {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background: #fff url(./image-site-vitrine/navSlideRight.png) center center
+    no-repeat;
+  background-size: 40px 40px;
+  border-radius: 50%;
+  top: 50%;
+  margin-top: -20px;
+  right: -10px;
+  box-shadow: 0 2px 5px #5e5e5e, 0 2px 5px #bdbdbd1a;
+  cursor: pointer;
+  transition-duration: 0.3s;
+}
+
+.next_slide:hover,
+.prev_slide:hover {
+  transform: scale(1.1);
+}
+
+.prev_slide {
+  background-image: url(./image-site-vitrine/navSlideLeft.png);
+  right: auto;
+  left: -10px;
+}
+
+/*-- carte du carrousel --*/
+.card_primary {
+  width: 70%;
+  padding: 10px;
+  border-radius: 3px;
+  box-shadow: 0 3px 10px #5e5e5e, 0 3px 10px #bdbdbd1a;
+  background-color: white;
+}
+
+.card_primary:hover {
+  transform: scale(1.01);
+  transition-duration: 0.3s;
+}
+
+.card_body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.card-img-top {
+  border-radius: 3px;
+}
+
+a.butn {
+  padding: 10px 0;
+  background-color: #ccdeff;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.butn-primary {
+  padding: 10px 30px !important;
+}
+
+.card_body > a.butn {
+  width: 100%;
+}
+
+a.butn:hover {
+  color: #4d81e2;
+  transition: ease-out 0.1s;
+}
+
+/*-- carrousel mobile --*/
+
+@media only screen and (max-width: 561px) {
+  .main_pages {
+    flex-direction: column;
+  }
+
+  .filter_articles {
+    width: 100%;
+  }
+
+  .containers {
+    width: 100%;
+  }
+}
+/*-- carte du carrousel mobile --*/
+
+@media only screen and (max-width: 561px) {
+  .containers_carrousels {
+    padding: 50px;
+  }
+
+  .next_slide,
+  .prev_slide {
+    width: 30px !important;
+    height: 30px !important;
+    background-size: 20px 20px !important;
+    right: 10px !important;
+    box-shadow: 0 2px 5px #5e5e5e, 0 2px 5px #bdbdbd1a;
+  }
+
+  .prev_slide {
+    left: 10px !important;
+  }
+
+  .card_primary {
+    width: 95%;
+    padding: 10px;
+    border: solid black 1px;
+    border-radius: 10px;
+    background-color: white;
+    font-size: 12px;
+  }
+
+  .card_primary:hover {
+    transform: scale(1.05);
+    transition-duration: 0.3s;
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FANATIC GAME</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gabarito&family=Heebo:wght@600&family=Montserrat:wght@300&family=Noto+Sans&family=Pixelify+Sans:wght@500&family=Poppins:wght@200;400&display=swap" rel="stylesheet">
+</head>
+<body id="fondecrancontactform">
+    <header class="navbar">
+        <div class="container"></div>
+        <div class="logo">
+            <img src="image-site-vitrine/logo_jeux-removebg-preview.png" alt="logo fanatic game">
+        </div>
+        <nav class="navi">
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="localisation.html">LOCALISATION</a></li>
+                <li><a href="présentationdusite.html">PRESENTATION DU SITE</a></li>
+                <li><a href="produits.html">PRODUITS</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+    </header>  
+    <div id="after_submit"></div>
+        <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
+        <div class="row">
+        <label class="required" for="name">VOTRE NOM</label><br />
+        <input id="name" class="input" name="name" type="text" value="" size="30" /><br />
+        <span id="name_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+        <label class="required" for="email">VOTRE EMAIL</label><br />
+        <input id="email" class="input" name="email" type="text" value="" size="30" /><br />
+        <span id="email_validation" class="error_message"></span>
+        </div>
+        <div class="row">
+        <label class="required" for="message">VOTRE MESSAGE</label><br />
+        <textarea id="message" class="input" name="message"  rows="7" cols="30"></textarea><br />
+        <span id="message_validation" class="error_message"></span>
+        </div>
+        <input id="submit_button" type="submit" value="Send email" />
+        </form>
+</body>
+</html>

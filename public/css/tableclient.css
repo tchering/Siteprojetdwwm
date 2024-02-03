@@ -1,0 +1,117 @@
+.table_client {
+  background-color: #333;
+  margin-top: 30px;
+  border: 5px solid black;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: scroll;
+  height: 500px;
+  width: 100%;
+  display: block;
+}
+.table_client th {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-left: 1px solid #333;
+}
+.table_client td {
+  padding: 5px 10px;
+  border-left: 1px solid #333;
+  border-bottom: 1px solid #333;
+}
+#tfoot_client {
+  position: sticky;
+  bottom: 0;
+  background-color: #333;
+  color: #fff;
+}
+#thead_client {
+  position: sticky;
+  top: 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.w5 {
+  width: 5%;
+}
+.w10 {
+  width: 10%;
+}
+.w15 {
+  width: 15%;
+}
+.w20 {
+  width: 20%;
+}
+.w25 {
+  width: 25%;
+}
+.w30 {
+  width: 30%;
+}
+.w35 {
+  width: 35%;
+}
+.w40 {
+  width: 40%;
+}
+.w45 {
+  width: 45%;
+}
+.w50 {
+  width: 50%;
+}
+.w55 {
+  width: 55%;
+}
+.w60 {
+  width: 60%;
+}
+.w65 {
+  width: 65%;
+}
+.w70 {
+  width: 70%;
+}
+.w75 {
+  width: 75%;
+}
+.w80 {
+  width: 80%;
+}
+.w85 {
+  width: 85%;
+}
+.w90 {
+  width: 90%;
+}
+.w95 {
+  width: 95%;
+}
+.w100 {
+  width: 100%;
+}
+
+.search {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 20px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  width: 200px;
+  height: 2rem;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+.fade-in.show {
+  opacity: 1;
+}

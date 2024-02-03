@@ -1,0 +1,40 @@
+/*-- page Filtre --*/
+
+.filter_articles {
+    width: 20%;
+    height: auto;
+    padding: 10px;
+    color: white;
+}
+
+.sidebar {
+    width: auto;
+    height: 80vh;
+    position: sticky;
+    top: 115px;
+    background-image: url('../image-site-vitrine/marioluigi.jpg');
+    background-size: cover;
+    padding: 20px;
+    border-radius: 10px;
+    border: #000 solid 10px;
+    color: white;
+    overflow: scroll;
+}
+
+.filter-label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: white;
+}
+
+.filter-checkbox {
+    margin-bottom: 10px;
+    color: white;
+}
+
+.filter-category label {
+    font-size: 12px;
+    color: white;
+}
