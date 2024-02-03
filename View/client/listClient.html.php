@@ -96,7 +96,7 @@
         xhr.send();
     }
 </script>
-<!-- this is test comment from sherpa branch  -->
+<!-- the previous comment has been deleted in sherpa -->
 <!-- 
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
