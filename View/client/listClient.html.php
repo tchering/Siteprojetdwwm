@@ -103,7 +103,7 @@
 <div class="bg-dark">
     <table class="table table_client">
         <div class="d-flex justify-content-between align-items-center">
-            <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREERrecoverpass</button><i class="fas fa-plus"></i></a>
+            <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREER</button><i class="fas fa-plus"></i></a>
             <div class="d-flex justify-content-center align-items-center mx-3">
                 <input id="mot" name="mot" onkeydown="touch(event)" type="search" class="search" placeholder="Recherche">
                 <a href="javascript:search()" class="search-logo text-light"><i class="fa fa-search fa-lg"></i></a>
