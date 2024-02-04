@@ -46,7 +46,6 @@ class ClientController extends MyFct
                 break;
             case 'forgotpassword':
                 if ($_POST) {
-
                     $this->forgotPassword($_POST);
                 }
                 break;
@@ -57,7 +56,7 @@ class ClientController extends MyFct
     //! Mes fonctions
     function forgotPassword($email)
     {
-
+        
         extract($email);
         // Generate a unique token
         $token = bin2hex(random_bytes(50));
