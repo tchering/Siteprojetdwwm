@@ -33,7 +33,7 @@ class Manager
                 $mail->Host = 'smtp.hostinger.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'studio@studiotech.shop';
-                $mail->Password = 'Ilovedopeleaf1.';
+                $mail->Password = '';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
