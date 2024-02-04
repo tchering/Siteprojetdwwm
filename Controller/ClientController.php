@@ -83,25 +83,37 @@ class ClientController extends MyFct
     //todo added new function saveCLient if id=0 then add if not then update.
     function saveClient($data, $files = [])
     {
+        MyFct::prints($files);
         if ($files['photo']['name']) {
-
             $file_photo = $_FILES['photo'];
-
             $name = $file_photo['name'];
-
             $source = $file_photo['tmp_name'];
-
             $destination = "public/upload/$name";
-
             $data['photo'] = $name;
-
             if (move_uploaded_file($source, $destination)) {
-                // Store path to uploaded photo in session
                 $_SESSION['photo'] = $destination;
             }
-        } else {
-            unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
         }
+        // if ($files['photo']['name']) {
+
+        //     $file_photo = $_FILES['photo'];
+
+        //     $name = $file_photo['name'];
+
+        //     $source = $file_photo['tmp_name'];
+
+        //     $destination = "public/upload/$name";
+
+        //     $data['photo'] = $name;
+        //     if (move_uploaded_file($source, $destination)) {
+        //         // Store path to uploaded photo in session
+        //         $_SESSION['photo'] = $destination;
+        //     } else {
+        //         MyFct::prints("Failed to move file from $source to $destination");
+        //     }
+        // } else {
+        //     unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
+        // }
         extract($data);
         $cm = new ClientManager();
         $id_client = (int) $id_client;
