@@ -22,7 +22,7 @@
 </table>
 
 <script>
-    let listClients = ;
+    let listClients =<?= json_encode($listClients); ?> ;
     allClients(listClients);
 
     function allClients(tableName) {
@@ -96,7 +96,7 @@
         xhr.send();
     }
 </script> -->
-
+ 
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
 </head>
