@@ -32,8 +32,8 @@ class Manager
                 $mail->isSMTP();
                 $mail->Host = 'smtp.hostinger.com';
                 $mail->SMTPAuth = true;
-                $mail->Username = 'studio@studiotech.shop';
-                $mail->Password = '';
+                $mail->Username = 'gamingshop@studiotech.shop';
+                $mail->Password = 'StudioTech2021';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
