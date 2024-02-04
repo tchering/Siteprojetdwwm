@@ -6,9 +6,9 @@ class Manager
     function forgotPasswordDb($table, $email, $token)
     {
         require 'vendor/autoload.php';
-    
+
         $connexion = $this->connexion();
-        $sql = "select * from $table where email=?";
+        $sql = "SELECT * FROM $table WHERE email=?";
         $requete = $connexion->prepare($sql);
         $requete->execute([$email]);
         $client = $requete->fetch(PDO::FETCH_ASSOC);
@@ -18,32 +18,32 @@ class Manager
             $sql = "UPDATE $table SET reset_token = ? WHERE email = ?";
             $requete = $connexion->prepare($sql);
             $requete->execute([$token, $email]);
-    
+
             // Create a new PHPMailer instance
             $mail = new PHPMailer\PHPMailer\PHPMailer();
-    
+
             // Set up the SMTP properties
             $mail->isSMTP();
-            $mail->Host = 'smtp.example.com'; // Replace with your SMTP server
+            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server
             $mail->SMTPAuth = true;
-            $mail->Username = 'user@example.com'; // Replace your SMTP username
-            $mail->Password = 'secret'; // Replace with your SMTP password
-    
+            $mail->Username = 'webdev4912@gmail.com'; // Replace your SMTP username
+            $mail->Password = 'volksZeitung1.'; // Replace with your SMTP password
+
             // Set the email properties
-            $mail->setFrom('from@example.com', 'Your Website'); // Replace with your "from" email and name
+            $mail->setFrom('webdev4912@gmail.com', 'sonamcv.online'); // Replace with your "from" email and name
             $mail->addAddress($email);
             $mail->Subject = 'Password Reset';
-            $resetLink = "http://yourwebsite.com/resetpassword.php?token=$token"; // Replace with your reset password URL
+            $resetLink = "http://localhost/Siteprojetdwwm/client&action=login&token=$token"; // Replace with your reset password URL
             $mail->Body = "Click this link to reset your password: $resetLink";
-    
+
             // Send the email
             if (!$mail->send()) {
                 $message = "<p class='text-danger text-center'>Mailer Error: " . $mail->ErrorInfo . "</p>";
             } else {
-                $message = "<p class='text-success text-center'>Un email vous a été envoyé</p>";
+                $message = "<p class='text-success text-center'>An email has been sent to you</p>";
             }
         } else {
-            $message = "<p class='text-danger text-center'>Cet email n'existe pas</p>";
+            $message = "<p class='text-danger text-center'>This email does not exist</p>";
         }
         return $message;
     }

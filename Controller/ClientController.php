@@ -47,16 +47,21 @@ class ClientController extends MyFct
             case 'forgotpassword':
                 if ($_POST) {
                     $this->forgotPassword($_POST);
-                }
+                } 
+                $this->forgotPasswordForm();
                 break;
         }
     }
 
 
     //! Mes fonctions
+    function forgotPasswordForm()
+    {
+        $file = "View/client/formForgotPassword.html.php";
+        $this->generatePage($file);
+    }
     function forgotPassword($email)
     {
-        
         extract($email);
         // Generate a unique token
         $token = bin2hex(random_bytes(50));
@@ -66,7 +71,7 @@ class ClientController extends MyFct
         $variables = [
             'message' => $message,
         ];
-        $file = "View/client/formForgotPassword.html.php";
+        $file  = "View/client/formForgotPassword.html.php";
         $this->generatePage($file, $variables);
     }
     function searchClient($mot)

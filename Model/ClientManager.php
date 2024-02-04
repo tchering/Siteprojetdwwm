@@ -1,26 +1,30 @@
 <?php
 class ClientManager extends Manager
 {
-    public function forgotPassword($email,$token){
-        $message = $this->forgotPasswordDb('Client',$email,$token);
+    public function forgotPassword($email, $token)
+    {
+        $message = $this->forgotPasswordDb('Client', $email, $token);
         return $message;
     }
-    public function search($mot){
-        return $this->searchTable('Client',$mot);
-      }
-    
-    public function supprimer($id){
-        return $this->deleteId('Client',$id);
+    public function search($mot)
+    {
+        return $this->searchTable('Client', $mot);
+    }
+
+    public function supprimer($id)
+    {
+        return $this->deleteId('Client', $id);
     }
     //!this is function to actually modify client when form is submitted
-    public function modifierClient($data){
-      return $this->modifierDb('Client',$data);
+    public function modifierClient($data)
+    {
+        return $this->modifierDb('Client', $data);
     }
     //!this is to insert new Client 
     public function insertClient($data)
     {
         // extract($data);
-        return $this->insert('Client',$data);
+        return $this->insert('Client', $data);
     }
     //! this is function when client modifiy then it shows form to modify.
     public function modifier($id)
@@ -56,4 +60,4 @@ class ClientManager extends Manager
         $message = $this->loginDb('Client', $data);
         return $message;
     }
-} 
+}
