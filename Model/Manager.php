@@ -9,7 +9,7 @@ class Manager
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            require 'vendor/autoload.php';
+            
 
             $connexion = $this->connexion();
             $sql = "SELECT * FROM $table WHERE email=?";
@@ -33,11 +33,11 @@ class Manager
                 $mail->Host = 'smtp.hostinger.com';
                 $mail->SMTPAuth = true;
                 $mail->Username = 'gamingshop@studiotech.shop';
-                $mail->Password = 'StudioTech2021';
+                $mail->Password = 'StudioTech2021.';
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('studio@studiotech.shop', 'GamingShop');
+                $mail->setFrom('gamingshop@studiotech.shop', 'GamingShop');
                 $mail->addAddress($userEmail, $userName);
 
                 $mail->isHTML(true);

@@ -1,4 +1,5 @@
 <?php
+require 'vendor/autoload.php';
 //---lancer la session----par défaut le nom est vide
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
