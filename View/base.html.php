@@ -83,7 +83,9 @@
                         <li><a href="" style="color: cornflowerblue;">MON COMPTE</a>
                             <ul class="sub-menu">
                                 <li><a href=""><?= $_SESSION['nom'] ?></a></li>
-                                <li><img src="<?php echo isset($_SESSION['photo'])?$_SESSION['photo']:"public/upload/photo.jpg" ?> " alt="" width="100%"></li>
+                                <li style="width: 100px; height: 100px; border-radius: 50%; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+                                    <img src="<?php echo isset($_SESSION['photo']) ? $_SESSION['photo'] : "public/upload/photo.jpg" ?>" alt="" style="width: 100%;" img-fluid>
+                                </li>
                                 <li><a href="client&action=changePass">Changer MDP</a></li>
                                 <li><a href="client&action=logout">LOGOUT</a></li>
                                 <?php if ($_SESSION['id_role'] == 1) : ?>

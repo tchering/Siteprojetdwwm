@@ -141,7 +141,9 @@
                 <tr>
                 <td class = "w5"><input type = "checkbox"></td>
                     <td class = "w10">${client.id}</td>
-                    <td class = "w10"><img src = "public/upload/${client.photo}" width="100%"></td>
+                    <td class="w10" style="width: 100px; height: 100px; overflow: hidden; position: relative;">
+    <img src="public/upload/${client.photo}" alt="" style="position: absolute; top: 50%; left: 50%; height: 100%; width: auto; transform: translate(-50%, -50%);">
+</td>
                     <td class = "w20">${client.nom}</td>
                     <td class = "w2(">${client.prenom}</td>
 
