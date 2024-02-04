@@ -1,4 +1,4 @@
-<table class="table align-middle mb-0 bg-white">
+<!-- <table class="table align-middle mb-0 bg-white">
     <div class="d-flex justify-content-between align-items-center">
         <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREER</button><i class="fas fa-plus"></i></a>
         <div class="d-flex justify-content-center align-items-center mx-3">
@@ -22,7 +22,7 @@
 </table>
 
 <script>
-    let listClients = <?= json_encode($listClients); ?>;
+    let listClients = ;
     allClients(listClients);
 
     function allClients(tableName) {
@@ -95,8 +95,8 @@
         }
         xhr.send();
     }
-</script>
-<!-- 
+</script> -->
+
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
 </head>
@@ -141,7 +141,7 @@
                 <tr>
                 <td class = "w5"><input type = "checkbox"></td>
                     <td class = "w10">${client.id}</td>
-                    <td class = "w10"><img src = "public/upload/${client.photo}" width="20%"></td>
+                    <td class = "w10"><img src = "public/upload/${client.photo}" width="100%"></td>
                     <td class = "w20">${client.nom}</td>
                     <td class = "w2(">${client.prenom}</td>
 
@@ -188,4 +188,4 @@
         }
         xhr.send();
     }
-</script> -->
+</script>
