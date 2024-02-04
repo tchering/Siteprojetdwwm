@@ -44,11 +44,32 @@ class ClientController extends MyFct
             case 'search':
                 $this->searchClient($mot);
                 break;
+            case 'forgotpassword':
+                if ($_POST) {
+
+                    $this->forgotPassword($_POST);
+                }
+                break;
         }
     }
 
 
     //! Mes fonctions
+    function forgotPassword($email)
+    {
+
+        extract($email);
+        // Generate a unique token
+        $token = bin2hex(random_bytes(50));
+        // Retrieve the user's email from the database
+        $cm = new ClientManager();
+        $message = $cm->forgotPassword($email, $token);
+        $variables = [
+            'message' => $message,
+        ];
+        $file = "View/client/formForgotPassword.html.php";
+        $this->generatePage($file, $variables);
+    }
     function searchClient($mot)
     {
         $cm = new ClientManager();

@@ -9,10 +9,7 @@
             <label for="email">Adresse e-mail:</label>
             <input type="email" id="email" name="email" required>
 
-            <label for="mot_de_passe">Mot de passe:</label>
-            <input type="password" id="mot_de_passe" name="mot_de_passe" required>
 
-            <button type="submit" value="submit">Se connecter</button>
-            <a href="client&action=forgotpassword" type="submit" value="submit">Forgot password?</a>
+            <button type="submit" value="submit">Password Reset</button>
 
         </form>

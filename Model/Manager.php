@@ -3,6 +3,50 @@
 include("./config/parametre.php");
 class Manager
 {
+    function forgotPasswordDb($table, $email, $token)
+    {
+        require 'vendor/autoload.php';
+    
+        $connexion = $this->connexion();
+        $sql = "select * from $table where email=?";
+        $requete = $connexion->prepare($sql);
+        $requete->execute([$email]);
+        $client = $requete->fetch(PDO::FETCH_ASSOC);
+        if ($client) {
+            // Save the token in the database, associated with the user's email
+            // You'll need to implement this according to your database setup
+            $sql = "UPDATE $table SET reset_token = ? WHERE email = ?";
+            $requete = $connexion->prepare($sql);
+            $requete->execute([$token, $email]);
+    
+            // Create a new PHPMailer instance
+            $mail = new PHPMailer\PHPMailer\PHPMailer();
+    
+            // Set up the SMTP properties
+            $mail->isSMTP();
+            $mail->Host = 'smtp.example.com'; // Replace with your SMTP server
+            $mail->SMTPAuth = true;
+            $mail->Username = 'user@example.com'; // Replace your SMTP username
+            $mail->Password = 'secret'; // Replace with your SMTP password
+    
+            // Set the email properties
+            $mail->setFrom('from@example.com', 'Your Website'); // Replace with your "from" email and name
+            $mail->addAddress($email);
+            $mail->Subject = 'Password Reset';
+            $resetLink = "http://yourwebsite.com/resetpassword.php?token=$token"; // Replace with your reset password URL
+            $mail->Body = "Click this link to reset your password: $resetLink";
+    
+            // Send the email
+            if (!$mail->send()) {
+                $message = "<p class='text-danger text-center'>Mailer Error: " . $mail->ErrorInfo . "</p>";
+            } else {
+                $message = "<p class='text-success text-center'>Un email vous a été envoyé</p>";
+            }
+        } else {
+            $message = "<p class='text-danger text-center'>Cet email n'existe pas</p>";
+        }
+        return $message;
+    }
 
     function searchTable($table, $mot)
     {
@@ -100,7 +144,7 @@ class Manager
                 $values[] = $value;
             }
             // Verify if the client already exists in the database
-            $sql = "SELECT * FROM Clients WHERE email = ?";
+            $sql = "SELECT * FROM Client WHERE email = ?";
             $requete = $connexion->prepare($sql);
             $requete->execute([$email]);
             $client = $requete->fetch(PDO::FETCH_ASSOC);
@@ -128,7 +172,7 @@ class Manager
         //? Ici, nous devons vérifier si l'utilisateur est dans la base de données.
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $connexion = $this->connexion();
-            $sql = "SELECT * FROM Clients WHERE email=?";
+            $sql = "SELECT * FROM Client WHERE email=?";
             $requete = $connexion->prepare($sql);
             $requete->execute([$email]);
             $client = $requete->fetch(PDO::FETCH_ASSOC);
