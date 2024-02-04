@@ -1,5 +1,7 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 include("./config/parametre.php");
 class Manager
 {
@@ -13,6 +15,8 @@ class Manager
         $requete->execute([$email]);
         $client = $requete->fetch(PDO::FETCH_ASSOC);
         if ($client) {
+            $userName = $client['nom'];
+            $userEmail = $client['email'];
             // Save the token in the database, associated with the user's email
             // You'll need to implement this according to your database setup
             $sql = "UPDATE $table SET reset_token = ? WHERE email = ?";
@@ -20,22 +24,43 @@ class Manager
             $requete->execute([$token, $email]);
 
             // Create a new PHPMailer instance
-            $mail = new PHPMailer\PHPMailer\PHPMailer();
-
-            // Set up the SMTP properties
+            // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+            $mail = new PHPMailer(true);
+            $mail->SMTPDebug = 0;
             $mail->isSMTP();
-            $mail->Host = 'smtp.gmail.com'; // Replace with your SMTP server
+            $mail->Host = 'smtp.hostinger.com';
             $mail->SMTPAuth = true;
-            $mail->Username = 'webdev4912@gmail.com'; // Replace your SMTP username
-            $mail->Password = 'volksZeitung1.'; // Replace with your SMTP password
+            $mail->Username = 'studio@studiotech.shop';
+            $mail->Password = 'Ilovedopeleaf1.';
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
 
-            // Set the email properties
-            $mail->setFrom('webdev4912@gmail.com', 'sonamcv.online'); // Replace with your "from" email and name
-            $mail->addAddress($email);
+            $mail->setFrom('studio@studiotech.shop', 'GamingShop');
+            $mail->addAddress($userEmail, $userName);
+
+            $mail->isHTML(true);
             $mail->Subject = 'Password Reset';
-            $resetLink = "http://localhost/Siteprojetdwwm/client&action=login&token=$token"; // Replace with your reset password URL
-            $mail->Body = "Click this link to reset your password: $resetLink";
 
+            // $resetLink = "http://yourwebsite.com/resetpassword.php?token=$token"; // 
+            $resetLink = "https://sonamcv.online/"; // Replace with your reset password URL
+            $mail->Body = "<html>
+            <head>
+                <title>Reset Your Password</title>
+            </head>
+            <body>
+                <p>Hello,</p>
+                <p>To reset your password, please click the button below:</p>
+                <table cellspacing='0' cellpadding='0'> <tr>
+                    <td align='center' width='200' height='40' bgcolor='#007BFF' style='border-radius: 5px; color: #ffffff; display: block;'>
+                        <a href='$resetLink' style='font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; line-height:40px; width:100%; display:inline-block'>Click to Reset</a>
+                    </td>
+                </tr> </table>
+                <p>If you did not request a password reset, please ignore this email or contact support if you have questions.</p>
+                <p>Thank you!</p>
+            </body>
+            </html>";
+
+            $mail->send();
             // Send the email
             if (!$mail->send()) {
                 $message = "<p class='text-danger text-center'>Mailer Error: " . $mail->ErrorInfo . "</p>";
