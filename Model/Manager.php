@@ -7,70 +7,73 @@ class Manager
 {
     function forgotPasswordDb($table, $email, $token)
     {
-        require 'vendor/autoload.php';
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $connexion = $this->connexion();
-        $sql = "SELECT * FROM $table WHERE email=?";
-        $requete = $connexion->prepare($sql);
-        $requete->execute([$email]);
-        $client = $requete->fetch(PDO::FETCH_ASSOC);
-        if ($client) {
-            $userName = $client['nom'];
-            $userEmail = $client['email'];
-            // Save the token in the database, associated with the user's email
-            // You'll need to implement this according to your database setup
-            $sql = "UPDATE $table SET reset_token = ? WHERE email = ?";
+            require 'vendor/autoload.php';
+
+            $connexion = $this->connexion();
+            $sql = "SELECT * FROM $table WHERE email=?";
             $requete = $connexion->prepare($sql);
-            $requete->execute([$token, $email]);
+            $requete->execute([$email]);
+            $client = $requete->fetch(PDO::FETCH_ASSOC);
+            if ($client) {
+                $userName = $client['nom'];
+                $userEmail = $client['email'];
+                // Save the token in the database, associated with the user's email
+                // You'll need to implement this according to your database setup
+                $sql = "UPDATE $table SET reset_token = ? WHERE email = ?";
+                $requete = $connexion->prepare($sql);
+                $requete->execute([$token, $email]);
 
-            // Create a new PHPMailer instance
-            // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
-            $mail = new PHPMailer(true);
-            $mail->SMTPDebug = 0;
-            $mail->isSMTP();
-            $mail->Host = 'smtp.hostinger.com';
-            $mail->SMTPAuth = true;
-            $mail->Username = 'studio@studiotech.shop';
-            $mail->Password = 'Ilovedopeleaf1.';
-            $mail->SMTPSecure = 'tls';
-            $mail->Port = 587;
+                // Create a new PHPMailer instance
+                // $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+                $mail = new PHPMailer(true);
+                $mail->SMTPDebug = 0;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.hostinger.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'studio@studiotech.shop';
+                $mail->Password = 'Ilovedopeleaf1.';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
 
-            $mail->setFrom('studio@studiotech.shop', 'GamingShop');
-            $mail->addAddress($userEmail, $userName);
+                $mail->setFrom('studio@studiotech.shop', 'GamingShop');
+                $mail->addAddress($userEmail, $userName);
 
-            $mail->isHTML(true);
-            $mail->Subject = 'Password Reset';
+                $mail->isHTML(true);
+                $mail->Subject = 'Password Reset';
 
-            // $resetLink = "http://yourwebsite.com/resetpassword.php?token=$token"; // 
-            $resetLink = "https://sonamcv.online/"; // Replace with your reset password URL
-            $mail->Body = "<html>
-            <head>
+                // $resetLink = "http://yourwebsite.com/resetpassword.php?token=$token"; // 
+                $resetLink = "http://localhost/Siteprojetdwwm/client&action=login"; // Replace with your reset password URL
+                $mail->Body = "<html>
+                <head>
                 <title>Reset Your Password</title>
-            </head>
-            <body>
+                </head>
+                <body>
                 <p>Hello,</p>
                 <p>To reset your password, please click the button below:</p>
                 <table cellspacing='0' cellpadding='0'> <tr>
-                    <td align='center' width='200' height='40' bgcolor='#007BFF' style='border-radius: 5px; color: #ffffff; display: block;'>
-                        <a href='$resetLink' style='font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; line-height:40px; width:100%; display:inline-block'>Click to Reset</a>
-                    </td>
+                <td align='center' width='200' height='40' bgcolor='#007BFF' style='border-radius: 5px; color: #ffffff; display: block;'>
+                <a href='$resetLink' style='font-size: 16px; font-family: Helvetica, Arial, sans-serif; color: #ffffff; text-decoration: none; line-height:40px; width:100%; display:inline-block'>Click to Reset</a>
+                </td>
                 </tr> </table>
                 <p>If you did not request a password reset, please ignore this email or contact support if you have questions.</p>
                 <p>Thank you!</p>
-            </body>
-            </html>";
+                </body>
+                </html>";
 
-            $mail->send();
-            // Send the email
-            if (!$mail->send()) {
-                $message = "<p class='text-danger text-center'>Mailer Error: " . $mail->ErrorInfo . "</p>";
+                $mail->send();
+                // Send the email
+                if (!$mail->send()) {
+                    $message = "<p class='text-danger text-center'>Mailer Error: " . $mail->ErrorInfo . "</p>";
+                } else {
+                    $message = "<p class='text-success text-center'>An email has been sent to you</p>";
+                }
             } else {
-                $message = "<p class='text-success text-center'>An email has been sent to you</p>";
+                $message = "<p class='text-danger text-center'>This email does not exist</p>";
             }
-        } else {
-            $message = "<p class='text-danger text-center'>This email does not exist</p>";
+            return $message;
         }
-        return $message;
     }
 
     function searchTable($table, $mot)
