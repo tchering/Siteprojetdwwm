@@ -7,17 +7,24 @@ class ClientController extends MyFct
         extract($_GET);
         switch ($action) {
             case 'afficher':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 if (isset($id)) {
                     $this->afficherClient($id);
                 }
                 break;
             case 'list':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->showClients();
                 break;
             case "login":
                 if ($_POST) {
                     $this->loginSuccess($_POST);
                 }
+
                 $this->loginUser();
                 break;
             case 'logout':
@@ -30,18 +37,33 @@ class ClientController extends MyFct
                 $this->registerForm();
                 break;
             case 'insert':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->afficherFormInsert();
                 break;
             case 'modifier':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->modifierClient($id);
                 break;
             case 'save':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->saveClient($_POST, $_FILES);
                 break;
             case 'supprimer':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->supprimer($id);
                 break;
             case 'search':
+                if (!isset($_SESSION['id_role']) || $_SESSION['id_role'] != 1) {
+                    $this->throwMessage('Vous navez pas droit de utiliser cet action ');
+                }
                 $this->searchClient($mot);
                 break;
             case 'forgotpassword':

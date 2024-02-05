@@ -1,8 +1,3 @@
-
-
-
-
-
 <!-- this is test in main  -->
 
 <div class="vh-150 w-100 d-flex justify-content-center align-items-center bg-dark">
@@ -15,8 +10,8 @@
                 <input type="text" id="id_client" name="id_client" value="<?= $id_client ?>" <?= $disabled ?>>
             </div>
             <div class="form-line-input my-4">
-                <img id="image_view" src="<?php echo isset($_SESSION['photo'])?$_SESSION['photo']:"public/upload/photo.jpg" ?>" alt="" width="40%">
-                <input class="" type="file" class="from-control w50" id="photo" name="photo" value="" onChange="previewImage(event,'image_view')" >
+                <img id="image_view" src="<?php echo isset($_SESSION['photo']) ? $_SESSION['photo'] : "public/upload/photo.jpg" ?>" alt="" width="40%">
+                <input class="" type="file" class="from-control w50" id="photo" name="photo" value="" onChange="previewImage(event,'image_view')">
             </div>
             <div class="form-line-input my-4">
                 <label for="nom">Nom:</label>
@@ -52,3 +47,14 @@
 
         </form>
         </body>
+        <?php
+        function displayClientPhoto()
+        {
+            $defaultPhoto = 'images/default.jpg';
+            $photo = isset($_SESSION['photo']) && !empty($_SESSION['photo']) ? $_SESSION['photo'] : $defaultPhoto;
+            if (file_exists($photo) && is_readable($photo)) {
+                return $photo;
+            }
+            return $defaultPhoto;
+        }
+        ?>
