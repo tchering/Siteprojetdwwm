@@ -93,6 +93,9 @@ class ClientController extends MyFct
             if (move_uploaded_file($source, $destination)) {
                 $_SESSION['photo'] = $destination;
             }
+        } else {
+            // unset($data['name']);
+            $data['photo'] = $_SESSION['photo'];
         }
         // if ($files['photo']['name']) {
 
@@ -274,7 +277,8 @@ class ClientController extends MyFct
             'nom' => $client->getNom(),
             'prenom' => $client->getPrenom(),
             'email' => $client->getEmail(),
-            'password' => '*******',
+            //when user logs in and change his password he can no more login with old password this is becuase in this password variable we have given default password.
+            'password' => $client->getMot_de_passe(),
             'disabled' => $disabled,
             'titre' => 'Liste Client',
             'role' => $client->getNom_role(),
