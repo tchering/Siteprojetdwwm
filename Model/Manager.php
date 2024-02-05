@@ -15,10 +15,13 @@ class Manager
     }
     function modifierDb($table, $data)
     {
-        extract($data);
+        // extract($data);
+        // $condition = "";
+        // $values = [];
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            extract($data);
         $condition = "";
         $values = [];
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($data  as  $key => $value) {
                 if ($key == 'mot_de_passe') {
                     $value = password_hash($value, PASSWORD_DEFAULT);
