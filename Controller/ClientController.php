@@ -47,7 +47,7 @@ class ClientController extends MyFct
             case 'forgotpassword':
                 if ($_POST) {
                     $this->forgotPassword($_POST);
-                } 
+                }
                 $this->forgotPasswordForm();
                 break;
         }
@@ -118,27 +118,9 @@ class ClientController extends MyFct
             if (move_uploaded_file($source, $destination)) {
                 $_SESSION['photo'] = $destination;
             }
+        } else {
+            unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
         }
-        // if ($files['photo']['name']) {
-
-        //     $file_photo = $_FILES['photo'];
-
-        //     $name = $file_photo['name'];
-
-        //     $source = $file_photo['tmp_name'];
-
-        //     $destination = "public/upload/$name";
-
-        //     $data['photo'] = $name;
-        //     if (move_uploaded_file($source, $destination)) {
-        //         // Store path to uploaded photo in session
-        //         $_SESSION['photo'] = $destination;
-        //     } else {
-        //         MyFct::prints("Failed to move file from $source to $destination");
-        //     }
-        // } else {
-        //     unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
-        // }
         extract($data);
         $cm = new ClientManager();
         $id_client = (int) $id_client;
@@ -299,7 +281,7 @@ class ClientController extends MyFct
             'nom' => $client->getNom(),
             'prenom' => $client->getPrenom(),
             'email' => $client->getEmail(),
-            'password' => '*******',
+            'password' => '',
             'disabled' => $disabled,
             'titre' => 'Liste Client',
             'role' => $client->getNom_role(),
