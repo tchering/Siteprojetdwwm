@@ -20,8 +20,8 @@ class Manager
         // $values = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             extract($data);
-        $condition = "";
-        $values = [];
+            $condition = "";
+            $values = [];
             foreach ($data  as  $key => $value) {
                 if ($key == 'mot_de_passe') {
                     $value = password_hash($value, PASSWORD_DEFAULT);
