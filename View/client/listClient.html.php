@@ -1,11 +1,11 @@
-<!-- <table class="table align-middle mb-0 bg-white">
+<table class="table align-middle mb-0 bg-white">
     <div class="d-flex justify-content-between align-items-center">
         <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREER</button><i class="fas fa-plus"></i></a>
         <div class="d-flex justify-content-center align-items-center mx-3">
             <input id="mot" name="mot" onkeydown="touch(event)" type="search" class="search" placeholder="Recherche">
             <a href="javascript:search()" class="search-logo text-dark"><i class="fa fa-search fa-lg"></i></a>
         </div>
-        
+
 
     </div>
     <thead class="bg-light">
@@ -22,7 +22,7 @@
 </table>
 
 <script>
-    let listClients =<?= json_encode($listClients); ?> ;
+    let listClients = <?= json_encode($listClients); ?>;
     allClients(listClients);
 
     function allClients(tableName) {
@@ -95,8 +95,8 @@
         }
         xhr.send();
     }
-</script> -->
-
+</script>
+<!-- 
 <head>
     <link rel="stylesheet" href="public/css/tableclient.css">
 </head>
@@ -188,4 +188,4 @@
         }
         xhr.send();
     }
-</script>
+</script> -->
