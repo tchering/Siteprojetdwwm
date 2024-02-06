@@ -9,11 +9,7 @@ class MyFct
         $file = "view/erreur/erreur.html.php";
         $this->generatePage($file,$variable);
     }
-   static function isGranted(){
-        if(!isset($_SESSION['id_role'])){
-            return false ;
-        }
-    }
+
     function generatePage($file, $variables = [], $base = "View/base.html.php")
     {
         if (file_exists($file)) {
