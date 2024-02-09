@@ -1,6 +1,7 @@
 <table class="table align-middle mb-0 bg-white">
     <div class="d-flex justify-content-between align-items-center">
         <a href="client&action=insert" button type="button" class="btn btn-secondary my-2">CREER</button><i class="fas fa-plus"></i></a>
+        <a href="javascript:void(0);" button type="download" class="btn btn-secondary my-2" onclick="createExcel()">CREER Excel<i class="fas fa-table"></i></a>
         <div class="d-flex justify-content-center align-items-center mx-3">
             <input id="mot" name="mot" onkeydown="touch(event)" type="search" class="search" placeholder="Recherche">
             <a href="javascript:search()" class="search-logo text-dark"><i class="fa fa-search fa-lg"></i></a>
@@ -82,7 +83,21 @@
         }
     }
 
-
+    function createExcel() {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', 'excel&action=create');
+        xhr.onload = () => {
+            if (xhr.status === 200) {
+                response = xhr.responseText;
+                alert('Excel file created successfully. Click OK to download');
+                window.open('Public/downloads/clients.xlsx');
+                setTimeout(() => {
+                    window.location.href = 'client&action=list';
+                }, 5000); // Redirect after 5 seconds
+            }
+        }
+        xhr.send();
+    }
 
     function search() {
         let xhr = new XMLHttpRequest();

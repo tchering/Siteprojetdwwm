@@ -10,6 +10,7 @@ if (!$_SESSION) {
 include("Service/extra.php");
 
 spl_autoload_register('charger');
+require('vendor/autoload.php');
 
 $path = "accueil";
 extract($_GET);
