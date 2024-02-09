@@ -79,7 +79,7 @@
                             <li><a href="#">GOODIES MANGA</a></li>
                         </ul>
                     </li>
-                    <?php if ($_SESSION['nom']) : ?>
+                    <?php if (isset($_SESSION['nom'])) : ?>
                         <li><a href="" style="color: cornflowerblue;">MON COMPTE</a>
                             <ul class="sub-menu">
                                 <li><a href=""><?= $_SESSION['nom'] ?></a></li>
