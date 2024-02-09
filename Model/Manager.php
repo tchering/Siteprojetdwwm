@@ -15,16 +15,20 @@ class Manager
     }
     function modifierDb($table, $data)
     {
-        // extract($data);
-        // $condition = "";
-        // $values = [];
+        extract($data);
+        $condition = "";
+        $values = [];
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            extract($data);
-            $condition = "";
-            $values = [];
             foreach ($data  as  $key => $value) {
+
                 if ($key == 'mot_de_passe') {
-                    $value = password_hash($value, PASSWORD_DEFAULT);
+                    //here if password field is not empty then it will be hased else continue as it is 
+                    if (!empty($value)) {
+
+                        $value = password_hash($value, PASSWORD_DEFAULT);
+                    } else {
+                        continue;
+                    }
                 }
                 if ($key == 'id_role' && is_array($value)) {
                     $value = implode(',', $value);
