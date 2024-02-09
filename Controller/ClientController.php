@@ -270,6 +270,11 @@ class ClientController extends MyFct
             }
             $roles[] = ['id_role' => $id_role, 'selected' => $selected];
         }
+        // $password = $client->getMot_de_passe();
+        $password = "";
+        if(empty($password)){
+            $password = $client->getMot_de_passe();
+        }
 
         $variables = [
             'roles' => $roles,
@@ -278,7 +283,7 @@ class ClientController extends MyFct
             'prenom' => $client->getPrenom(),
             'email' => $client->getEmail(),
             //when user logs in and change his password he can no more login with old password this is becuase in this password variable we have given default password.
-            'password' => $client->getMot_de_passe(),
+            'password' => '',
             'disabled' => $disabled,
             'titre' => 'Liste Client',
             'role' => $client->getNom_role(),

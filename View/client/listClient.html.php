@@ -55,7 +55,7 @@
       <div class="button d-flex justify-content-between my-3">
                         <a href="client&action=afficher&id=${client.id}" class="btn btn-sm btn-secondary mx-2" ><i class="fas fa-eye"></i></a>
                         <a href="client&action=modifier&id=${client.id}" class="btn btn-sm btn-success mx-2"><i class = "fas fa-pen"></i></a>
-                        <a href="javascript:void(0);" class="btn btn-sm btn-danger mx-2" onclick="supprimer(${client.id})"><i class="fas fa-trash"></i></a> 
+                        <a href="javascript:void(0);" class="btn btn-sm btn-danger mx-2" onClick="supprimer(${client.id})"><i class="fas fa-trash"></i></a> 
                     </div>
       </td>
     </tr>
@@ -69,6 +69,7 @@
         document.getElementById('count').innerHTML = `<h3>Total Client : ${count}</h3>`;
     }
     const supprimer = (id) => {
+        alert('hello');
         let confirmation = confirm('Voulez-vous vraiment supprimer ce client?');
         if (confirmation) {
             document.location.href = `client&action=supprimer&id=${id}`;
