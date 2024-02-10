@@ -83,7 +83,7 @@
                         <li><a href="" style="color: cornflowerblue;">MON COMPTE</a>
                             <ul class="sub-menu">
                                 <li><a href=""><?= $_SESSION['nom'] ?></a></li>
-                                <li><img src="<?php echo isset($_SESSION['photo'])?$_SESSION['photo']:"public/upload/photo.jpg" ?> " alt="" width="100%"></li>
+                                <li><img src="<?php echo isset($_SESSION['photo'])?$_SESSION['photo']:"public/upload/photo.jpg" ?> " alt="" width="100%"/></li>
                                 <li><a href="client&action=changePass">Changer MDP</a></li>
                                 <li><a href="client&action=logout">LOGOUT</a></li>
                                 <?php if ($_SESSION['id_role'] == 1) : ?>

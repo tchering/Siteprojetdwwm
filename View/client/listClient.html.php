@@ -32,12 +32,12 @@
             <tr>
       <td>
         <div class="d-flex align-items-center">
-          <img
-              src="public/upload/${client.photo}"
-              alt=""
-              style="width: 45px; height: 45px"
-              class="rounded-circle"
-              />
+        <img
+            src="${client.photo ? 'public/upload/' + client.photo : 'public/upload/photo.jpg'}"
+            alt=""
+            style="width: 45px; height: 45px"
+            class="rounded-circle"
+        />
           <div class="ms-3">
             <p class="fw-bold mb-1">${client.nom} ${client.prenom}</p>
             <p class="text-muted mb-0">${client.email}</p>

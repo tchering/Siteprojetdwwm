@@ -144,6 +144,7 @@ class Manager
                 $_SESSION['prenom'] = $client['prenom'];
                 $_SESSION['id'] = $client['id_client'];
                 $_SESSION['id_role'] = $client['id_role']; // important car c'est de la que nous donnerons les autorisations
+                $_SESSION['photo'] = 'public/upload/' . $client['photo'];
                 header('location:accueil');
             } else {
                 $message = $baseMessage .= "Votre nom ou mot de passe est incorrect";

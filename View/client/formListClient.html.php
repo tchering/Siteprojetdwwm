@@ -15,7 +15,7 @@
                 <input type="text" id="id_client" name="id_client" value="<?= $id_client ?>" <?= $disabled ?>>
             </div>
             <div class="form-line-input my-4">
-                <img id="image_view" src="<?php echo isset($_SESSION['photo'])?$_SESSION['photo']:"public/upload/photo.jpg" ?>" alt="" width="40%">
+            <img id="image_view" src="Public/upload/<?= $photo ?>" alt="" width="30%" class="img-fluid">
                 <input class="" type="file" class="from-control w50" id="photo" name="photo" value="" onChange="previewImage(event,'image_view')" >
             </div>
             <div class="form-line-input my-4">

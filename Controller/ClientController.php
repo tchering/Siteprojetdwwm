@@ -83,7 +83,6 @@ class ClientController extends MyFct
     //todo added new function saveCLient if id=0 then add if not then update.
     function saveClient($data, $files = [])
     {
-        MyFct::prints($files);
         if ($files['photo']['name']) {
             $file_photo = $_FILES['photo'];
             $name = $file_photo['name'];
@@ -97,26 +96,7 @@ class ClientController extends MyFct
             // unset($data['name']);
             $data['photo'] = $_SESSION['photo'];
         }
-        // if ($files['photo']['name']) {
-
-        //     $file_photo = $_FILES['photo'];
-
-        //     $name = $file_photo['name'];
-
-        //     $source = $file_photo['tmp_name'];
-
-        //     $destination = "public/upload/$name";
-
-        //     $data['photo'] = $name;
-        //     if (move_uploaded_file($source, $destination)) {
-        //         // Store path to uploaded photo in session
-        //         $_SESSION['photo'] = $destination;
-        //     } else {
-        //         MyFct::prints("Failed to move file from $source to $destination");
-        //     }
-        // } else {
-        //     unset($data['name']); // supprimer l'element a l'indice 'name' dans $data 
-        // }
+ 
         extract($data);
         $cm = new ClientManager();
         $id_client = (int) $id_client;
@@ -254,7 +234,7 @@ class ClientController extends MyFct
         //this is for photo
         $photo = $client->getPhoto();
         if (!$photo) {
-            $photo = "photo.jpg";
+            $photo = "photo.jpg";  //  l'iage photo.jpg doit etre créer
         }
         //!Here we will get all roles from database with its id_role since it is in Client.
         $r = new RoleManager();
@@ -272,7 +252,7 @@ class ClientController extends MyFct
         }
         // $password = $client->getMot_de_passe();
         $password = "";
-        if(empty($password)){
+        if (empty($password)) {
             $password = $client->getMot_de_passe();
         }
 
